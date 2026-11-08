@@ -1,0 +1,96 @@
+category,name,description,price,variants,image_url,tags,available,sort
+Iced Coffee,Americano,,,16oz:119|22oz:139,,,TRUE,1
+Iced Coffee,Cloud Americano,,,16oz:129|22oz:149,,New,TRUE,2
+Iced Coffee,Cafe Latte,,,16oz:129|22oz:149,,Bestseller,TRUE,3
+Iced Coffee,Spanish Latte,,,16oz:129|22oz:149,,,TRUE,4
+Iced Coffee,Mocha Latte,,,16oz:139|22oz:159,,Bestseller,TRUE,5
+Iced Coffee,Vanilla Latte,,,16oz:139|22oz:159,,,TRUE,6
+Iced Coffee,Hazelnut Latte,,,16oz:139|22oz:159,,Bestseller,TRUE,7
+Iced Coffee,Roasted Almond,,,16oz:139|22oz:159,,,TRUE,8
+Iced Coffee,White Mocha,,,16oz:149|22oz:169,,,TRUE,9
+Iced Coffee,Caramel Latte,,,16oz:149|22oz:169,,Bestseller,TRUE,10
+Iced Coffee,Salted Caramel,,,16oz:149|22oz:169,,,TRUE,11
+Iced Coffee,Seasalt Latte,,,16oz:149|22oz:169,,,TRUE,12
+Iced Coffee,Caramel Macchiato,,,16oz:149|22oz:169,,,TRUE,13
+Iced Coffee,Spanish Oat Latte,,,16oz:159|22oz:179,,New,TRUE,14
+Iced Coffee,Cacao Latte,,,16oz:159|22oz:179,,New,TRUE,15
+Iced Coffee,Biscoff Latte,,,16oz:169|22oz:189,,Bestseller,TRUE,16
+Hot Coffee,Americano,,,12oz:139,,,TRUE,1
+Hot Coffee,Cafe Latte,,,12oz:149,,Bestseller,TRUE,2
+Hot Coffee,Spanish Latte,,,12oz:149,,Bestseller,TRUE,3
+Hot Coffee,Mocha Latte,,,12oz:159,,,TRUE,4
+Hot Coffee,White Mocha,,,12oz:169,,Bestseller,TRUE,5
+Non-Coffee,Strawberry Milk,,,16oz:119|22oz:139,,Bestseller,TRUE,1
+Non-Coffee,Mango Milk,,,16oz:119|22oz:139,,New,TRUE,2
+Non-Coffee,Ube Cloud,,,16oz:129|22oz:149,,Bestseller,TRUE,3
+Non-Coffee,Milky Choco,,,16oz:129|22oz:149,,,TRUE,4
+Non-Coffee,Creamy Oreo,,,16oz:129|22oz:149,,,TRUE,5
+Non-Coffee,Oreo Choco,,,16oz:139|22oz:159,,Bestseller,TRUE,6
+Non-Coffee,Hershey Milk,,,16oz:139|22oz:159,,,TRUE,7
+Matcha Series,Matcha Latte,,,16oz:129|22oz:149,,Bestseller,TRUE,1
+Matcha Series,Matcha Berry,,,16oz:129|22oz:149,,,TRUE,2
+Matcha Series,Mango Matcha,,,16oz:129|22oz:149,,New,TRUE,3
+Matcha Series,Dirty Matcha,,,16oz:139|22oz:159,,,TRUE,4
+Matcha Series,Matcha Seasalt Cream,,,16oz:149|22oz:169,,New,TRUE,5
+Fruity Soda,Lychee,,,16oz:119|22oz:139,,Bestseller,TRUE,1
+Fruity Soda,Green Apple,,,16oz:119|22oz:139,,Bestseller,TRUE,2
+Fruity Soda,Bubblegum,,,16oz:119|22oz:139,,,TRUE,3
+Fruity Soda,Raspberry,,,16oz:119|22oz:139,,New,TRUE,4
+Fruity Soda,Kiwi,,,16oz:119|22oz:139,,,TRUE,5
+Fruity Soda,Blueberry,,,16oz:119|22oz:139,,Bestseller,TRUE,6
+Fruity Soda,Strawberry,,,16oz:119|22oz:139,,Bestseller,TRUE,7
+Fruity Soda,Lemon,,,16oz:119|22oz:139,,New,TRUE,8
+Frappuccino,Strawberry Dream,22oz,159,,,,TRUE,1
+Frappuccino,Ube Queso,22oz,159,,,New,TRUE,2
+Frappuccino,Creamy Oreo,22oz,169,,,,TRUE,3
+Frappuccino,Chocolate Chips,22oz,169,,,,TRUE,4
+Frappuccino,Matcha Blend,22oz,169,,,,TRUE,5
+Frappuccino,Salted Toffee,22oz,179,,,New,TRUE,6
+Frappuccino,Caramel Blend,22oz,179,,,New,TRUE,7
+Frappuccino,White Mocha,22oz,179,,,New,TRUE,8
+Frappuccino,Java Chips,22oz,189,,,Bestseller,TRUE,9
+Frappuccino,Señorito Signature,22oz,189,,,Bestseller,TRUE,10
+Frappuccino,Biscoff Blend,22oz,189,,,Bestseller,TRUE,11
+Classic Croffles,Plain Delight,,119,,,,TRUE,1
+Classic Croffles,Classic Nutella,,129,,,Bestseller,TRUE,2
+Classic Croffles,Classic Matcha,,129,,,,TRUE,3
+Classic Croffles,Classic Biscoff,,139,,,Bestseller,TRUE,4
+Premium Croffles,Cookies & Cream,,149,,,,TRUE,1
+Premium Croffles,Nutella Alcapone,,149,,,Bestseller,TRUE,2
+Premium Croffles,Ham & Cheese,,159,,,,TRUE,3
+Premium Croffles,Matcha Alcapone,,159,,,,TRUE,4
+Premium Croffles,Biscoff Supreme,,169,,,Bestseller,TRUE,5
+Snacks,Flavored Fries,"Cheese, BBQ, Sour Cream & Salt",119,,,,TRUE,1
+Snacks,Overload Nachos,,149,,,Bestseller,TRUE,2
+Snacks,Nachos & Fries Combo,,169,,,New,TRUE,3
+Snacks,Overload Fries,,179,,,Bestseller,TRUE,4
+Snacks,Wings & Fries Combo,,199,,,New,TRUE,5
+Rice Meal,Tocino Classic,,159,,,,TRUE,1
+Rice Meal,Hungarian Morning,,159,,,Bestseller,TRUE,2
+Rice Meal,Cheesy Katsu Plate,,159,,,Bestseller,TRUE,3
+Rice Meal,Spam Breakfast,,169,,,,TRUE,4
+Rice Meal,Morning Rush Tapa,,169,,,New,TRUE,5
+Pasta,Tuna Pasta,,159,,,,TRUE,1
+Pasta,Creamy Carbonara,,189,,,Bestseller,TRUE,2
+Pasta,Chicken Pesto,,199,,,New,TRUE,3
+Sandwich,Ham Overload,,169,,,,TRUE,1
+Sandwich,Tuna Overload,,169,,,Bestseller,TRUE,2
+Sandwich,Bacon Overload,,179,,,,TRUE,3
+Sandwich,Spam Overload,,189,,,Bestseller,TRUE,4
+Pastry,Chocolate Chips,,60,,,Bestseller,TRUE,1
+Pastry,Red Velvet,,60,,,Bestseller,TRUE,2
+Pastry,Double Chocolate,,60,,,New,TRUE,3
+Chicken Wings,3pcs Wings (with rice),"Flavors: Buffalo, Snow Cheese, Sweet Chili, Honey Butter, Soy Garlic, Teriyaki, BBQ",149,,,Bestseller,TRUE,1
+Chicken Wings,6pcs Wings,"Flavors: Buffalo, Snow Cheese, Sweet Chili, Honey Butter, Soy Garlic, Teriyaki, BBQ",209,,,,TRUE,2
+Chicken Wings,12pcs Wings,"Flavors: Buffalo, Snow Cheese, Sweet Chili, Honey Butter, Soy Garlic, Teriyaki, BBQ",349,,,,TRUE,3
+Customize Drinks,Extra Shot,,40,,,,TRUE,1
+Customize Drinks,Sub Oatmilk,,50,,,,TRUE,2
+Customize Drinks,Sauce,,30,,,,TRUE,3
+Customize Drinks,Syrup,,30,,,,TRUE,4
+Customize Drinks,Whipped Cream,,25,,,,TRUE,5
+Customize Drinks,Choco Droplets,,25,,,,TRUE,6
+Customize Drinks,Nata,,25,,,,TRUE,7
+Add-ons,Garlic Rice,,30,,,,TRUE,1
+Add-ons,Egg,,15,,,,TRUE,2
+Add-ons,Cheese Sauce,,30,,,,TRUE,3
+Add-ons,Garlic Mayo,,30,,,,TRUE,4
