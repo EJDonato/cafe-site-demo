@@ -61,8 +61,7 @@
   "theme": {
     "primary": "#111111",
     "accent": "#F2F2F2",
-    "tint": "#DDEFF3",
-    "font": "Outfit"
+    "tint": "#DDEFF3"
   },
   "logoWide": "/assets/logo-wide.jpg",
   "story": [
@@ -76,5 +75,6 @@
     "https://www.facebook.com/reel/29213984228251213/",
     "https://www.facebook.com/reel/1642532400682290/",
     "https://www.facebook.com/reel/1155219227458755/"
-  ]
+  ],
+  "storyIsPlaceholder": true
 }

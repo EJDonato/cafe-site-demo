@@ -6,7 +6,9 @@
   <title>{{cafeName}} | Coffee, croffles &amp; meals in Marilao, Bulacan</title>
   <meta name="description" content="{{description}}" />
   <meta name="theme-color" content="{{primary}}" />
-  <link rel="icon" href="{{logo}}" />
+  <link rel="icon" type="image/png" href="/assets/icon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+  <link rel="canonical" href="{{siteUrl}}/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{cafeName}}" />
   <meta property="og:title" content="{{cafeName}} | Coffee, croffles &amp; meals in Marilao, Bulacan" />
@@ -15,20 +17,21 @@
   <meta property="og:url" content="{{siteUrl}}/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/src/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
+  {{{themeStyle}}}
+  {{{jsonLd}}}
   <script type="module" src="/src/home.js"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="/" aria-label="{{cafeName}}, home"><img id="logo" src="{{logoWide}}" alt="{{cafeName}}" width="87" height="56" /></a>
     <nav class="nav" aria-label="Main"><a href="#visit">Visit us</a><a class="btn primary sm" href="/menu.html">Menu</a></nav>
   </header>
 
-  <main id="top">
+  <main id="main" tabindex="-1">
     <section class="hero">
-      <img class="hero-bg" src="{{heroImage}}" alt="Inside {{cafeName}}: black chairs, white walls and a coffee bar" width="1600" height="900" fetchpriority="high" />
+      <picture><source type="image/webp" srcset="{{heroSrcset}}" sizes="100vw" /><img class="hero-bg" src="{{heroImage}}" alt="Inside {{cafeName}}: black chairs, white walls and a coffee bar" width="1600" height="900" fetchpriority="high" /></picture>
       <div class="hero-text">
         <h1>{{cafeName}}</h1>
         <p class="tagline">{{tagline}}</p>
@@ -50,8 +53,8 @@
         <h2>Fresh from the counter</h2>
         <p class="lead">Iced coffee, matcha and frappuccinos, loaded nachos, croffles and more, made for here, to go, or delivered.</p>
         <div class="food-grid">
-          <figure><img src="/assets/food-1.jpg" alt="Four iced drinks in Señorito Cafe cups and a bowl of loaded nachos with cheese sauce on a black tray" width="1000" height="1333" loading="lazy" /></figure>
-          <figure><img src="/assets/food-2.jpg" alt="Three Señorito Cafe frappuccinos topped with whipped cream, Oreo, pistachio and sliced almonds" width="1000" height="1144" loading="lazy" /></figure>
+          <figure><picture><source type="image/webp" srcset="/assets/food-1-500.webp 500w, /assets/food-1-1000.webp 1000w" sizes="(min-width:700px) 480px, 100vw" /><img src="/assets/food-1.jpg" alt="Four iced drinks in Señorito Cafe cups and a bowl of loaded nachos with cheese sauce on a black tray" width="1000" height="1333" loading="lazy" /></picture></figure>
+          <figure><picture><source type="image/webp" srcset="/assets/food-2-500.webp 500w, /assets/food-2-1000.webp 1000w" sizes="(min-width:700px) 480px, 100vw" /><img src="/assets/food-2.jpg" alt="Three Señorito Cafe frappuccinos topped with whipped cream, Oreo, pistachio and sliced almonds" width="1000" height="1144" loading="lazy" /></picture></figure>
         </div>
         <a class="btn light" href="/menu.html">See the full menu</a>
       </div>

@@ -38,7 +38,7 @@ export function initKiosk({ menu, cfg, onAdd }) {
     const from = Math.min(...prices(it));
     const price = `${prices(it).length > 1 ? 'from ' : ''}${peso(from)}`;
     const tags = it.tags.map(tagHtml).join('') + (it.available ? '' : '<span class="tag sold">Sold out</span>');
-    return `<button type="button" class="card${it.available ? '' : ' sold'}" data-i="${i}" aria-label="${esc(it.label)}, ${price}${it.available ? '' : ', sold out'}">
+    return `<button type="button" class="card${it.available ? '' : ' sold'}" data-i="${i}">
       <span class="card-img${it.image ? '' : ' ph'}">${img(it, 240)}<b class="badge" hidden></b><span class="plus" aria-hidden="true">${PLUS}</span></span>
       <span class="card-name">${esc(it.name)}</span>
       <span class="card-meta"><span class="card-price">${price}</span>${tags}</span>
@@ -60,6 +60,7 @@ export function initKiosk({ menu, cfg, onAdd }) {
     }
     $('#catTitle').textContent = title;
     $('#catSub').textContent = sub;
+    $('#listStatus').textContent = `${title}, ${sub}`;
     $('#grid').innerHTML = list.map(card).join('');
     $('#grid').removeAttribute('aria-busy');
     $('#noMatch').hidden = list.length > 0;
@@ -83,7 +84,7 @@ export function initKiosk({ menu, cfg, onAdd }) {
       const n = rows.reduce((s, v) => s + (qty.get(itemKey(it, v.label)) || 0), 0);
       const b = el.querySelector('.badge');
       b.hidden = !n;
-      b.textContent = n;
+      b.innerHTML = `${n}<span class="sr"> in your order</span>`;
     });
   }
 
@@ -103,7 +104,8 @@ export function initKiosk({ menu, cfg, onAdd }) {
     go(a.dataset.chip, true);
   });
   window.addEventListener('popstate', () => go(bySlug.has(location.hash.slice(1)) ? location.hash.slice(1) : first, false));
-  $('#q').addEventListener('input', () => { show(); $('#chips').scrollLeft = 0; });
+  let typing;
+  $('#q').addEventListener('input', () => { clearTimeout(typing); typing = setTimeout(() => { show(); $('#chips').scrollLeft = 0; }, 120); });
   $('#grid').addEventListener('click', (e) => {
     const c = e.target.closest('.card');
     if (c) openSheet(+c.dataset.i);

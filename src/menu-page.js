@@ -7,11 +7,6 @@ import { renderCart } from './ui.js';
 import { initKiosk } from './kiosk.js';
 
 const $ = (s) => document.querySelector(s);
-const root = document.documentElement.style;
-root.setProperty('--primary', cfg.theme.primary);
-root.setProperty('--accent', cfg.theme.accent);
-root.setProperty('--tint', cfg.theme.tint);
-
 $('#deliveryOpt').hidden = !cfg.delivery;
 
 let index = new Map();
@@ -61,7 +56,7 @@ function collect() {
   const bad = [];
   if (!f.name.value.trim()) bad.push(f.name);
   if (typeOf() === 'Delivery' && !f.address.value.trim()) bad.push(f.address);
-  [f.name, f.address].forEach((x) => x.classList.toggle('bad', bad.includes(x)));
+  [f.name, f.address].forEach((x) => { x.classList.toggle('bad', bad.includes(x)); x.setAttribute('aria-invalid', String(bad.includes(x))); });
   err.hidden = !bad.length;
   if (bad.length) { err.textContent = bad[0] === f.name ? 'Please enter your name.' : 'Please enter your delivery address.'; bad[0].focus(); return null; }
   const fresh = priceLines(cart, index); // re-check against the latest menu

@@ -31,3 +31,14 @@ Owner rules: `price` is a number; `variants` is `16oz:119|22oz:139`; `available`
 
 ## Menu photos
 Each menu item shows a photo. Put a hosted image link in the `image_url` column of the sheet and it replaces the placeholder (the logo on a grey tile, `public/assets/logo-wide.jpg`). Use roughly square photos at least 400px wide.
+
+## Checks
+- `npm test`: unit tests (menu parsing, cart, order message, page builders, hours, launch checks).
+- `npm run build && npm run smoke`: browser smoke test of the kiosk menu, search, deep links and the Messenger message (needs Google Chrome; set `CHROME_PATH` if it is not in the usual place).
+- `npm run build` prints **[launch check]** warnings while placeholders remain: `siteUrl`, the invented story (`storyIsPlaceholder`), `phone`, delivery links and `menuCsvUrl`. The site is not ready to launch until the build prints none.
+
+## Assets
+- Fonts are self-hosted in `public/fonts/` (Outfit, SIL OFL). No third-party font request.
+- Hero and food photos have WebP sizes next to the JPG fallback (`hero-800/1200/1600.webp`, `food-N-500/1000.webp`). Regenerate with `cwebp -q 72 -resize <w> 0 in.jpg -o out.webp` when a photo changes.
+- `site.config.json` colors are written into the HTML at build time; there is no `theme.font` any more (the font is in `src/style.css`).
+- The build also writes `robots.txt`, `sitemap.xml`, canonical links and schema.org `CafeOrCoffeeShop` data from the config.

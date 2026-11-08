@@ -6,7 +6,9 @@
   <title>Menu | {{cafeName}}</title>
   <meta name="description" content="{{description}}" />
   <meta name="theme-color" content="{{primary}}" />
-  <link rel="icon" href="{{logo}}" />
+  <link rel="icon" type="image/png" href="/assets/icon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+  <link rel="canonical" href="{{siteUrl}}/menu.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{cafeName}}" />
   <meta property="og:title" content="Menu | {{cafeName}}" />
@@ -15,18 +17,18 @@
   <meta property="og:url" content="{{siteUrl}}/menu.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="/src/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
+  {{{themeStyle}}}
   <script type="module" src="/src/menu-page.js"></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <a class="brand" href="/" aria-label="{{cafeName}}, home"><img id="logo" src="{{logoWide}}" alt="{{cafeName}}" width="87" height="56" /></a>
     <nav class="nav" aria-label="Main"><a href="/">Home</a><a class="btn primary sm" href="/menu.html" aria-current="page">Menu</a></nav>
   </header>
 
-  <main id="top">
+  <main id="main" tabindex="-1">
     <section class="menu-head">
       <div>
         <h1>Menu</h1>
@@ -37,8 +39,8 @@
 
     <div class="kiosk">
       <nav class="chips" id="chips" aria-label="Menu categories"><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span></nav>
-      <section class="stage" id="menu" aria-live="polite">
-        <div class="stage-head"><h2 id="catTitle"><span class="sk-bar sk-title"></span></h2><p class="muted" id="catSub"></p></div>
+      <section class="stage" id="menu">
+        <div class="stage-head"><h2 id="catTitle"><span class="sk-bar sk-title"></span></h2><p class="muted" id="catSub"></p><p class="sr" id="listStatus" role="status"></p></div>
         <div class="grid" id="grid" aria-busy="true"><span class="sr">Loading menu…</span><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div></div>
         <p class="nomatch muted" id="noMatch" role="status" hidden>No matches. Try another word, like "latte" or "wings".</p>
       </section>
@@ -61,13 +63,13 @@
     <div class="dlg-head"><h2 id="cartTitle">Your order</h2><button type="button" id="cartClose" class="icon" aria-label="Close order"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <div id="cartBody"></div>
     <form id="checkout" novalidate hidden>
-      <label>Name <input name="name" autocomplete="name" required maxlength="60" /></label>
+      <label>Name <input name="name" autocomplete="name" required maxlength="60" aria-describedby="formErr" /></label>
       <fieldset>
         <legend>Order type</legend>
         <label class="radio"><input type="radio" name="type" value="Pickup" checked /> Pickup</label>
         <label class="radio" id="deliveryOpt"><input type="radio" name="type" value="Delivery" /> Delivery</label>
       </fieldset>
-      <label id="addrRow" hidden>Delivery address <textarea name="address" rows="2" maxlength="200" autocomplete="street-address"></textarea></label>
+      <label id="addrRow" hidden>Delivery address <textarea name="address" rows="2" maxlength="200" autocomplete="street-address" aria-describedby="formErr"></textarea></label>
       <label>Preferred time (optional) <input name="time" placeholder="e.g. 3:00 PM or ASAP" maxlength="40" /></label>
       <label>Note (optional) <textarea name="note" rows="2" maxlength="200" placeholder="Less ice, wing flavor, etc."></textarea></label>
       <p id="hint" class="muted" hidden></p>

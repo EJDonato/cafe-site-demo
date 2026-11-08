@@ -9,12 +9,10 @@ const svg = (d) => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" 
 export const PLUS = svg('M12 5v14M5 12h14');
 export const MINUS = svg('M5 12h14');
 
-/** Cart controls for one key: a + button, or a - qty + stepper once it's in the cart. */
+/** Cart-line stepper: - qty +. Lines only exist while qty > 0. */
 export function ctl(key, qty, name) {
   const k = `data-key="${esc(key)}"`;
-  return qty
-    ? `<span class="step"><button type="button" data-act="dec" ${k} aria-label="Remove one ${esc(name)}">${MINUS}</button><output aria-label="Quantity">${qty}</output><button type="button" data-act="inc" ${k} aria-label="Add one ${esc(name)}">${PLUS}</button></span>`
-    : `<button type="button" class="add" data-act="inc" ${k} aria-label="Add ${esc(name)}">${PLUS}</button>`;
+  return `<span class="step"><button type="button" data-act="dec" ${k} aria-label="Remove one ${esc(name)}">${MINUS}</button><output aria-label="Quantity">${qty}</output><button type="button" data-act="inc" ${k} aria-label="Add one ${esc(name)}">${PLUS}</button></span>`;
 }
 
 /** One best-seller per category (distinct names), linking to its menu section. */
