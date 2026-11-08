@@ -28,3 +28,6 @@ Owner rules: `price` is a number; `variants` is `16oz:119|22oz:139`; `available`
 - [ ] Confirm the menu against the café's current prices
 - [ ] Deploy to Cloudflare Pages / Netlify / Vercel (build `npm run build`, output `dist`), connect the domain, accounts in the client's name
 - [ ] Check the link preview in the Facebook Sharing Debugger
+
+## Menu photos
+Each menu item shows a photo. Put a hosted image link in the `image_url` column of the sheet and it replaces the placeholder (the logo on a grey tile, `public/assets/logo-wide.jpg`). Use roughly square photos at least 400px wide.

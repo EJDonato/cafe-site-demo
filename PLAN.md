@@ -142,3 +142,4 @@ Target café is Señorito Cafe (see `CAFE.md`). These change the generic plan:
 - **Two pages:** `index.html` (hero, about, how ordering works, visit info) and `menu.html` (menu, cart, checkout). Entry scripts `src/home.js` and `src/menu-page.js`. The cart is shared through localStorage.
 - **Open/closed indicator removed** at the owner's request (PRD §5.1 and §11 "closed now" note no longer apply). The hours list stays, with today in bold.
 - Hero photo is now the full-bleed background of the hero section; the logo in the header is larger (52px).
+- **Kiosk menu** (`src/kiosk.js`): the menu page shows one category at a time as a card grid (category rail on desktop, sticky chips on phones). Tapping a card opens a sheet for size and quantity. Search spans all categories. `menu.html#cat-<name>` deep-links to a category.

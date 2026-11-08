@@ -1,10 +1,10 @@
-import './style.css';
 import cfg from '../site.config.json';
 import seedCsv from '../menu.csv?raw';
 import { loadMenu, buildIndex } from './menu.js';
 import { loadCart, saveCart, change, priceLines } from './cart.js';
 import { buildOrder, messengerUrl, copyText } from './order.js';
-import { renderMenu, renderCart, refreshControls } from './ui.js';
+import { renderCart } from './ui.js';
+import { initKiosk } from './kiosk.js';
 
 const $ = (s) => document.querySelector(s);
 const root = document.documentElement.style;
@@ -17,6 +17,7 @@ $('#deliveryOpt').hidden = !cfg.delivery;
 let index = new Map();
 let cart = loadCart();
 let view;
+let kiosk;
 let ready = false; // don't prune the saved cart until the menu has loaded
 
 function sync() {
@@ -26,8 +27,20 @@ function sync() {
   }
   saveCart(cart);
   renderCart(view, cfg, view.lines.some((l) => /flavor/i.test(l.item.name + l.item.description)));
-  refreshControls(cart);
+  kiosk?.refreshBadges(cart);
   if (!view.lines.length && $('#cart').open && !view.removed.length) $('#cart').close();
+}
+
+let toastTimer;
+function onAdd(key, qty, label) {
+  cart = change(cart, key, qty);
+  sync();
+  const t = $('#toast');
+  t.textContent = `Added ${qty > 1 ? qty + '× ' : ''}${label}`;
+  t.hidden = false;
+  t.style.animation = 'none'; t.offsetWidth; t.style.animation = '';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.hidden = true; }, 2000);
 }
 
 document.addEventListener('click', (e) => {
@@ -78,6 +91,7 @@ sync();
 loadMenu({ url: cfg.menuCsvUrl, fallbackCsv: seedCsv, ttlMs: cfg.menuCacheMinutes * 60000 }).then(({ menu }) => {
   index = buildIndex(menu);
   ready = true;
-  renderMenu(menu, cfg);
+  kiosk = initKiosk({ menu, cfg, onAdd });
   sync();
 });
+

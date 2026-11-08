@@ -14,6 +14,7 @@
   <meta property="og:image" content="{{siteUrl}}{{ogImage}}" />
   <meta property="og:url" content="{{siteUrl}}/menu.html" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/src/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -27,19 +28,34 @@
 
   <main id="top">
     <section class="menu-head">
-      <h1>Menu</h1>
-      <p class="muted">Tap + to add to your order. Prices in ₱.</p>
+      <div>
+        <h1>Menu</h1>
+        <p class="muted">Pick a category, tap an item, choose your size.</p>
+      </div>
+      <div class="search"><label class="sr" for="q">Search the menu</label><input id="q" type="search" placeholder="Search drinks and food" autocomplete="off" enterkeyhint="search" /></div>
     </section>
 
-    <nav class="chips" id="chips" aria-label="Menu categories"></nav>
-    <section id="menu" class="menu" aria-live="polite"><p class="muted pad">Loading menu…</p></section>
+    <div class="kiosk">
+      <nav class="chips" id="chips" aria-label="Menu categories"><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span><span class="sk-chip" aria-hidden="true"></span></nav>
+      <section class="stage" id="menu" aria-live="polite">
+        <div class="stage-head"><h2 id="catTitle"><span class="sk-bar sk-title"></span></h2><p class="muted" id="catSub"></p></div>
+        <div class="grid" id="grid" aria-busy="true"><span class="sr">Loading menu…</span><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div><div class="sk-card" aria-hidden="true"><span class="sk-img"></span><span class="sk-bar" style="width:70%"></span><span class="sk-bar" style="width:40%"></span></div></div>
+        <p class="nomatch muted" id="noMatch" role="status" hidden>No matches. Try another word, like "latte" or "wings".</p>
+      </section>
+    </div>
   </main>
 
-  <footer class="foot"><a href="/#visit">Address, hours &amp; contact</a></footer>
+  <footer class="foot">
+    <nav aria-label="Footer"><a href="/menu.html">Menu</a><a href="/#story">Our story</a><a href="/#visit">Find us</a><a href="{{socials.facebook}}" target="_blank" rel="noopener">Facebook</a><a href="{{socials.instagram}}" target="_blank" rel="noopener">Instagram</a><a href="{{socials.tiktok}}" target="_blank" rel="noopener">TikTok</a></nav>
+    <p>© {{cafeName}} · {{address}}</p>
+  </footer>
 
   <button id="cartBtn" class="fab" type="button" hidden>
     <span class="fab-l"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>View order <b id="cartCount" class="pill">0</b></span><b id="cartTotal">₱0</b>
   </button>
+
+  <dialog id="item" aria-labelledby="sheetTitle"><div id="itemBody"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
 
   <dialog id="cart" aria-labelledby="cartTitle">
     <div class="dlg-head"><h2 id="cartTitle">Your order</h2><button type="button" id="cartClose" class="icon" aria-label="Close order"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>

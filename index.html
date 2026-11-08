@@ -14,6 +14,7 @@
   <meta property="og:image" content="{{siteUrl}}{{ogImage}}" />
   <meta property="og:url" content="{{siteUrl}}/" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/src/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -31,10 +32,12 @@
       <div class="hero-text">
         <h1>{{cafeName}}</h1>
         <p class="tagline">{{tagline}}</p>
-        <p class="meta" id="heroMeta"></p>
-        <div class="cta" id="cta"><a class="btn light" href="/menu.html">View Menu</a></div>
+        <p class="meta">{{heroMeta}}</p>
+        <div class="cta"><a class="btn light" href="/menu.html">View Menu</a>{{{heroLinks}}}</div>
       </div>
     </section>
+
+    <div class="marquee" aria-label="What's on the menu">{{{marquee}}}</div>
 
     <section class="story" id="story">
       <h2>Our story</h2>
@@ -54,6 +57,13 @@
       </div>
     </section>
 
+    <section class="bestsec" id="best">
+      <h2>Best sellers</h2>
+      <p class="lead">The ones we flag on our own menu. Tap one to jump straight to it.</p>
+      <ul class="best-list" id="bestList" aria-busy="true"><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li><li class="sk-row" aria-hidden="true"><span class="sk-bar" style="width:46%"></span><span class="sk-bar" style="width:18%"></span></li></ul>
+      <a class="btn primary" href="/menu.html">See the full menu</a>
+    </section>
+
     <section class="order" id="how">
       <h2>How ordering works</h2>
       <ol class="steps">
@@ -64,10 +74,13 @@
       <a class="btn primary" href="/menu.html">Start your order</a>
     </section>
 
-    <section id="visit" class="find"></section>
-    <section id="reels" class="social"></section>
+    <section id="visit" class="find">{{{find}}}</section>
+    {{{reelsSection}}}
   </main>
 
-  <footer class="foot">© {{cafeName}}</footer>
+  <footer class="foot">
+    <nav aria-label="Footer"><a href="/menu.html">Menu</a><a href="/#story">Our story</a><a href="/#visit">Find us</a><a href="{{socials.facebook}}" target="_blank" rel="noopener">Facebook</a><a href="{{socials.instagram}}" target="_blank" rel="noopener">Instagram</a><a href="{{socials.tiktok}}" target="_blank" rel="noopener">TikTok</a></nav>
+    <p>© {{cafeName}} · {{address}}</p>
+  </footer>
 </body>
 </html>
