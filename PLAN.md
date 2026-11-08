@@ -136,3 +136,9 @@ Target café is Señorito Cafe (see `CAFE.md`). These change the generic plan:
 | 3 Checkout → Messenger | Done. Form, message, shortening, Copy order, recheck at checkout. Verified in headless Chrome (m.me URL contents) |
 | 4 Info, SEO, polish | Done. Info section, OG/meta from config, theme. Lighthouse not run |
 | 5 Test + launch | Not done: real-device and FB/IG in-app testing, deploy, domain, handover. See the checklist in `README.md` |
+
+## 10. Changes after review (2026-11-08)
+
+- **Two pages:** `index.html` (hero, about, how ordering works, visit info) and `menu.html` (menu, cart, checkout). Entry scripts `src/home.js` and `src/menu-page.js`. The cart is shared through localStorage.
+- **Open/closed indicator removed** at the owner's request (PRD §5.1 and §11 "closed now" note no longer apply). The hours list stays, with today in bold.
+- Hero photo is now the full-bleed background of the hero section; the logo in the header is larger (52px).

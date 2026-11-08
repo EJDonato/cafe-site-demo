@@ -115,3 +115,6 @@ Summary of structure:
 
 - 2026-11-08: Target café is Señorito Cafe (Marilao, Bulacan). Replaces the PRD's "012 CAFÉ" example.
 - 2026-11-08: Facebook page could not be scraped (login wall). Info taken from the owner's post and uploaded images instead.
+- 2026-11-08: **Story text on the home page is invented placeholder copy** (`story` in `site.config.json`). Replace with the owner's real story. The line "Your Daily Brew for a Perfect Day" is real: it is printed on the café's cups (see `food-1.jpg`).
+- 2026-11-08: Two food photos added (`public/assets/food-1.jpg`, `food-2.jpg`); the originals moved to `cafe images/`.
+- 2026-11-08: Home page has a Google Maps embed (search by `mapQuery`, not an exact pin) and a Facebook section. Paste reel/video URLs into `reels` in `site.config.json`; if empty, the site tries the Facebook Page timeline plugin, which only works for a public Facebook *Page* (not a personal profile).

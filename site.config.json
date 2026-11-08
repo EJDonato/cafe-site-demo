@@ -30,14 +30,12 @@
     "sun": "12:00 PM – 12:00 AM"
   },
   "delivery": true,
-  "allowOrderWhenClosed": true,
   "perks": [
     "Free Wi-Fi",
     "For here",
     "To go",
     "Delivery"
   ],
-  "about": "",
   "categoryGroups": {
     "Sip & Brew": [
       "Iced Coffee",
@@ -66,5 +64,17 @@
     "tint": "#DDEFF3",
     "font": "Outfit"
   },
-  "logoWide": "/assets/logo-wide.jpg"
+  "logoWide": "/assets/logo-wide.jpg",
+  "story": [
+    "Señorito Cafe began with a simple idea: a clean, calm corner in Lambakin where friends can sit down and enjoy a proper cup.",
+    "We started with the classics, iced lattes, matcha and rich frappuccinos, then kept adding what our regulars asked for: crisp croffles, rice meals, pasta and wings. Whether it's a quick coffee or a full meal, there's something on the menu for it.",
+    "Come in, take it to go, or order from your phone and we'll have it ready."
+  ],
+  "storyQuote": "Your Daily Brew for a Perfect Day",
+  "mapQuery": "Señorito Cafe, Lambakin, Marilao, Bulacan",
+  "reels": [
+    "https://www.facebook.com/reel/29213984228251213/",
+    "https://www.facebook.com/reel/1642532400682290/",
+    "https://www.facebook.com/reel/1155219227458755/"
+  ]
 }

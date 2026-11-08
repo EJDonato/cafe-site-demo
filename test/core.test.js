@@ -4,7 +4,6 @@ import { readFileSync } from 'node:fs';
 import { parseMenu, buildIndex, itemKey, loadMenu } from '../src/menu.js';
 import { change, priceLines, loadCart } from '../src/cart.js';
 import { buildOrder, peso, messengerUrl } from '../src/order.js';
-import { parseRange, status, label } from '../src/hours.js';
 
 const seed = readFileSync(new URL('../menu.csv', import.meta.url), 'utf8');
 const CSV = `category,name,description,price,variants,image_url,tags,available,sort
@@ -77,17 +76,6 @@ test('delivery includes address; long orders shorten but full stays complete', (
   assert.ok(encodeURIComponent(o.text).length <= 1800);
   assert.ok(o.full.includes('Item number 119'));
   assert.ok(messengerUrl('123', 'a b').endsWith('?text=a%20b'));
-});
-
-const H = { mon: '12:00 PM – 12:00 AM', tue: '12:00 PM – 12:00 AM', sun: 'Closed', wed: '6:00 PM – 2:00 AM' };
-test('hours: midnight close, spill past midnight, closed days', () => {
-  assert.deepEqual(parseRange(H.mon), [720, 1440]);
-  assert.equal(status(H, { day: 'mon', mins: 23 * 60 + 59 }).open, true);
-  assert.equal(status(H, { day: 'mon', mins: 11 * 60 + 59 }).open, false);
-  assert.equal(status(H, { day: 'mon', mins: 12 * 60 }).open, true);
-  assert.equal(label(status(H, { day: 'tue', mins: 0 })), 'Closed · Opens today at 12:00 PM');
-  assert.equal(status(H, { day: 'thu', mins: 60 }).open, true); // wed 6PM–2AM spills
-  assert.equal(label(status(H, { day: 'sat', mins: 600 })), 'Closed · Opens Monday at 12:00 PM');
 });
 
 test('loadMenu: cache, stale cache, fallback', async () => {

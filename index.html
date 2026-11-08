@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{cafeName}} | Menu &amp; Order Online</title>
+  <title>{{cafeName}} | Coffee, croffles &amp; meals in Marilao, Bulacan</title>
   <meta name="description" content="{{description}}" />
   <meta name="theme-color" content="{{primary}}" />
   <link rel="icon" href="{{logo}}" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{cafeName}}" />
-  <meta property="og:title" content="{{cafeName}} | Menu &amp; Order Online" />
+  <meta property="og:title" content="{{cafeName}} | Coffee, croffles &amp; meals in Marilao, Bulacan" />
   <meta property="og:description" content="{{description}}" />
   <meta property="og:image" content="{{siteUrl}}{{ogImage}}" />
   <meta property="og:url" content="{{siteUrl}}/" />
@@ -17,57 +17,57 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/home.js"></script>
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="#top" aria-label="{{cafeName}}, back to top"><img id="logo" src="{{logoWide}}" alt="{{cafeName}}" width="174" height="112" /></a>
-    <span id="status" class="status" role="status"></span>
+    <a class="brand" href="/" aria-label="{{cafeName}}, home"><img id="logo" src="{{logoWide}}" alt="{{cafeName}}" width="87" height="56" /></a>
+    <nav class="nav" aria-label="Main"><a href="#visit">Visit us</a><a class="btn primary sm" href="/menu.html">Menu</a></nav>
   </header>
 
   <main id="top">
     <section class="hero">
-      <img class="hero-img" src="{{heroImage}}" alt="Inside {{cafeName}}: black chairs, white walls and a coffee bar" width="1600" height="900" fetchpriority="high" />
+      <img class="hero-bg" src="{{heroImage}}" alt="Inside {{cafeName}}: black chairs, white walls and a coffee bar" width="1600" height="900" fetchpriority="high" />
       <div class="hero-text">
         <h1>{{cafeName}}</h1>
         <p class="tagline">{{tagline}}</p>
         <p class="meta" id="heroMeta"></p>
-        <div class="cta" id="cta"><a class="btn primary" href="#menu">View Menu</a></div>
+        <div class="cta" id="cta"><a class="btn light" href="/menu.html">View Menu</a></div>
       </div>
     </section>
 
-    <nav class="chips" id="chips" aria-label="Menu categories"></nav>
-    <section id="menu" class="menu" aria-live="polite"><p class="muted pad">Loading menu…</p></section>
-    <section id="info" class="info"></section>
+    <section class="story" id="story">
+      <h2>Our story</h2>
+      <div class="prose">{{story}}</div>
+      <blockquote class="quote">{{storyQuote}}</blockquote>
+    </section>
+
+    <section class="food" id="food">
+      <div class="food-in">
+        <h2>Fresh from the counter</h2>
+        <p class="lead">Iced coffee, matcha and frappuccinos, loaded nachos, croffles and more, made for here, to go, or delivered.</p>
+        <div class="food-grid">
+          <figure><img src="/assets/food-1.jpg" alt="Four iced drinks in Señorito Cafe cups and a bowl of loaded nachos with cheese sauce on a black tray" width="1000" height="1333" loading="lazy" /></figure>
+          <figure><img src="/assets/food-2.jpg" alt="Three Señorito Cafe frappuccinos topped with whipped cream, Oreo, pistachio and sliced almonds" width="1000" height="1144" loading="lazy" /></figure>
+        </div>
+        <a class="btn light" href="/menu.html">See the full menu</a>
+      </div>
+    </section>
+
+    <section class="order" id="how">
+      <h2>How ordering works</h2>
+      <ol class="steps">
+        <li><span>Browse the menu and tap <b>+</b> on what you want.</span></li>
+        <li><span>Add your name, choose pickup or delivery, and leave an optional time or note.</span></li>
+        <li><span>Tap <b>Order via Messenger</b>. Your order opens in our chat, ready to send. We confirm your order and payment there.</span></li>
+      </ol>
+      <a class="btn primary" href="/menu.html">Start your order</a>
+    </section>
+
+    <section id="visit" class="find"></section>
+    <section id="reels" class="social"></section>
   </main>
 
   <footer class="foot">© {{cafeName}}</footer>
-
-  <button id="cartBtn" class="fab" type="button" hidden>
-    <span class="fab-l"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>View order <b id="cartCount" class="pill">0</b></span><b id="cartTotal">₱0</b>
-  </button>
-
-  <dialog id="cart" aria-labelledby="cartTitle">
-    <div class="dlg-head"><h2 id="cartTitle">Your order</h2><button type="button" id="cartClose" class="icon" aria-label="Close order"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-    <div id="cartBody"></div>
-    <form id="checkout" novalidate hidden>
-      <label>Name <input name="name" autocomplete="name" required maxlength="60" /></label>
-      <fieldset>
-        <legend>Order type</legend>
-        <label class="radio"><input type="radio" name="type" value="Pickup" checked /> Pickup</label>
-        <label class="radio" id="deliveryOpt"><input type="radio" name="type" value="Delivery" /> Delivery</label>
-      </fieldset>
-      <label id="addrRow" hidden>Delivery address <textarea name="address" rows="2" maxlength="200" autocomplete="street-address"></textarea></label>
-      <label>Preferred time (optional) <input name="time" placeholder="e.g. 3:00 PM or ASAP" maxlength="40" /></label>
-      <label>Note (optional) <textarea name="note" rows="2" maxlength="200" placeholder="Less ice, wing flavor, etc."></textarea></label>
-      <p id="closedNote" class="warn" hidden></p>
-      <p id="hint" class="muted" hidden></p>
-      <p id="formErr" class="warn" role="alert" hidden></p>
-      <button type="submit" class="btn primary block">Order via Messenger</button>
-      <button type="button" id="copyBtn" class="btn block">Copy order</button>
-      <p id="after" class="after" role="status" hidden></p>
-      <button type="button" id="clearBtn" class="link">Clear cart</button>
-    </form>
-  </dialog>
 </body>
 </html>

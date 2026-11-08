@@ -1,4 +1,4 @@
-import { DAYS, FULL, fmt, label, status, clock, parseRange } from './hours.js';
+import { DAYS, FULL, today } from './hours.js';
 import { peso } from './order.js';
 import { itemKey } from './menu.js';
 
@@ -84,49 +84,57 @@ function observeChips() {
   chips.forEach((c) => { const s = document.getElementById(c.dataset.chip); if (s) io.observe(s); });
 }
 
-export function renderHeader(cfg) {
-  const s = $('#status');
-  const tick = () => {
-    const st = status(cfg.hours, clock(new Date(), cfg.timezone));
-    s.textContent = label(st);
-    s.classList.toggle('open', st.open);
-    return st;
-  };
-  tick();
-  setInterval(tick, 60000);
+export function renderHero(cfg) {
   const links = [
-    cfg.grabfoodUrl && `<a class="btn" href="${esc(cfg.grabfoodUrl)}" target="_blank" rel="noopener">GrabFood</a>`,
-    cfg.foodpandaUrl && `<a class="btn" href="${esc(cfg.foodpandaUrl)}" target="_blank" rel="noopener">Foodpanda</a>`,
+    cfg.grabfoodUrl && `<a class="btn ghost" href="${esc(cfg.grabfoodUrl)}" target="_blank" rel="noopener">GrabFood</a>`,
+    cfg.foodpandaUrl && `<a class="btn ghost" href="${esc(cfg.foodpandaUrl)}" target="_blank" rel="noopener">Foodpanda</a>`,
   ].filter(Boolean).join('');
   $('#cta').insertAdjacentHTML('beforeend', links);
-  const t = DAYS.includes(clock(new Date(), cfg.timezone).day) ? cfg.hours[clock(new Date(), cfg.timezone).day] : '';
-  $('#heroMeta').innerHTML = [cfg.address, t && `Today ${t}`].filter(Boolean).map((x) => `<span>${esc(x)}</span>`).join('');
+  $('#heroMeta').textContent = [cfg.address, ...(cfg.perks || [])].join(' · ');
 }
 
-export function renderInfo(cfg) {
-  const today = clock(new Date(), cfg.timezone).day;
+export function renderFind(cfg) {
+  const now = today(new Date(), cfg.timezone);
   const rows = DAYS.slice(1).concat('sun').map((d) => {
-    const t = d === today ? ' class="today"' : '';
+    const t = d === now ? ' class="today"' : '';
     return `<dt${t}>${FULL[d]}</dt><dd${t}>${esc(cfg.hours[d] || 'Closed')}</dd>`;
   }).join('');
-  const msg = `https://m.me/${encodeURIComponent(cfg.messengerUsername)}`;
+  const q = encodeURIComponent(cfg.mapQuery || cfg.address);
   const link = (href, text) => href && `<a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${text}</a>`;
   const s = cfg.socials || {};
-  $('#info').innerHTML = `
-    <h2>Visit us</h2>
-    <p>${esc(cfg.address)}${cfg.mapsUrl ? ` · <a href="${esc(cfg.mapsUrl)}" target="_blank" rel="noopener">Open in Maps</a>` : ''}</p>
-    ${cfg.perks?.length ? `<p class="muted">${cfg.perks.map(esc).join(' · ')}</p>` : ''}
-    ${cfg.about ? `<p>${esc(cfg.about)}</p>` : ''}
-    <h2>Hours</h2><dl>${rows}</dl>
-    <h2>Contact</h2>
-    <div class="links">${[link(msg, 'Messenger'), cfg.phone && link(`tel:${cfg.phone}`, esc(cfg.phone)), link(s.facebook, 'Facebook'), link(s.instagram, 'Instagram'), link(s.tiktok, 'TikTok')].filter(Boolean).join('')}</div>`;
+  const msg = `https://m.me/${encodeURIComponent(cfg.messengerUsername)}`;
+  $('#visit').innerHTML = `
+    <h2>Find us</h2>
+    <div class="find-grid">
+      <div class="map"><iframe title="Map showing ${esc(cfg.cafeName)}" src="https://www.google.com/maps?q=${q}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      <div class="find-info">
+        <h3>Address</h3>
+        <p>${esc(cfg.address)}</p>
+        <div class="links">${link(cfg.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${q}`, 'Open in Maps')}${link(`https://www.google.com/maps/dir/?api=1&destination=${q}`, 'Directions')}</div>
+        <h3>Hours</h3>
+        <dl>${rows}</dl>
+        <h3>Contact</h3>
+        <div class="links">${[link(msg, 'Messenger'), cfg.phone && link(`tel:${cfg.phone}`, esc(cfg.phone)), link(s.facebook, 'Facebook'), link(s.instagram, 'Instagram'), link(s.tiktok, 'TikTok')].filter(Boolean).join('')}</div>
+      </div>
+    </div>`;
+}
+
+/** Facebook reels: embed each URL in cfg.reels, else the page's timeline (needs a public Facebook Page). */
+export function renderReels(cfg) {
+  const fb = cfg.socials?.facebook;
+  const reels = cfg.reels || [];
+  const frames = reels.length
+    ? `<div class="reels">${reels.map((u, i) => `<iframe title="Facebook reel ${i + 1}" src="https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(u)}&show_text=false&width=267&height=476" width="267" height="476" loading="lazy" scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>`).join('')}</div>`
+    : fb ? `<div class="fb-page"><iframe title="${esc(cfg.cafeName)} on Facebook" src="https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(fb)}&tabs=timeline&width=500&height=640&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" width="500" height="640" loading="lazy" allow="encrypted-media"></iframe></div>` : '';
+  if (!frames) return;
+  $('#reels').innerHTML = `<h2>Watch us on Facebook</h2><p class="lead">We share our drinks, food and café moments on Facebook.</p>${frames}${fb ? `<a class="btn" href="${esc(fb)}" target="_blank" rel="noopener">Follow on Facebook</a>` : ''}`;
 }
 
 export function renderCart({ lines, removed, total, count }, cfg, hasFlavor) {
   $('#cartBtn').hidden = !lines.length;
   $('#cartCount').textContent = count;
   $('#cartTotal').textContent = peso(total);
-  $('#cartBody').innerHTML = (removed.length ? `<p class="warn">Removed (sold out or no longer on the menu): ${removed.map((k) => esc(k.split('␟')[1])).join(', ')}</p>` : '')
+  $('#cartBody').innerHTML = (removed.length ? `<p class="warn">Removed (sold out or no longer on the menu): ${removed.map((k) => esc(k.split('\u241F')[1])).join(', ')}</p>` : '')
     + (lines.length
       ? lines.map((l) => `<div class="line"><div class="row"><div><span class="name">${esc(l.item.label)}</span>${l.variantLabel ? `<div class="sub">${esc(l.variantLabel)} · ${peso(l.unit)} each</div>` : `<div class="sub">${peso(l.unit)} each</div>`}</div><span class="price">${peso(l.total)}</span></div>
           <div class="row"><span></span><span class="ctl">${ctl(l.key, l.qty, l.item.label)}</span></div></div>`).join('') + `<div class="total"><span>Total</span><span>${peso(total)}</span></div>`
@@ -136,12 +144,3 @@ export function renderCart({ lines, removed, total, count }, cfg, hasFlavor) {
   hint.hidden = !hasFlavor;
   hint.textContent = hasFlavor ? 'Tip: write your flavor (e.g. Buffalo, Cheese) in the note.' : '';
 }
-
-export function closedNote(cfg) {
-  const st = status(cfg.hours, clock(new Date(), cfg.timezone));
-  const el = $('#closedNote');
-  el.hidden = st.open;
-  if (!st.open) el.textContent = `We're closed right now (${label(st).replace('Closed · ', '').toLowerCase()}). You can still send your order. The café will reply when open.`;
-  return st;
-}
-export { parseRange, fmt };

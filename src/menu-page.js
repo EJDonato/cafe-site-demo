@@ -4,7 +4,7 @@ import seedCsv from '../menu.csv?raw';
 import { loadMenu, buildIndex } from './menu.js';
 import { loadCart, saveCart, change, priceLines } from './cart.js';
 import { buildOrder, messengerUrl, copyText } from './order.js';
-import { renderMenu, renderHeader, renderInfo, renderCart, refreshControls, closedNote } from './ui.js';
+import { renderMenu, renderCart, refreshControls } from './ui.js';
 
 const $ = (s) => document.querySelector(s);
 const root = document.documentElement.style;
@@ -12,8 +12,6 @@ root.setProperty('--primary', cfg.theme.primary);
 root.setProperty('--accent', cfg.theme.accent);
 root.setProperty('--tint', cfg.theme.tint);
 
-renderHeader(cfg);
-renderInfo(cfg);
 $('#deliveryOpt').hidden = !cfg.delivery;
 
 let index = new Map();
@@ -36,7 +34,7 @@ document.addEventListener('click', (e) => {
   const b = e.target.closest('[data-act]');
   if (b) { cart = change(cart, b.dataset.key, b.dataset.act === 'inc' ? 1 : -1); sync(); }
 });
-$('#cartBtn').addEventListener('click', () => { $('#cart').showModal(); closedNote(cfg); });
+$('#cartBtn').addEventListener('click', () => $('#cart').showModal());
 $('#cartClose').addEventListener('click', () => $('#cart').close());
 $('#clearBtn').addEventListener('click', () => { cart = []; sync(); });
 
