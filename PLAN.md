@@ -126,3 +126,13 @@ Target café is Señorito Cafe (see `CAFE.md`). These change the generic plan:
 - Remaining `TBD`s in `CAFE.md`: street address, Maps link, phone, GrabFood/Foodpanda links, domain, sheet editor.
 - Owner decision on wings/fries flavor handling.
 - Confirm the stack (Vite + vanilla) before Phase 1.
+
+## 9. Status (2026-11-08)
+
+| Phase | Status |
+|---|---|
+| 1 Scaffold + data | Done. Menu parse/validate/cache/fallback with tests. Google Sheet not created yet (needs the owner's account); see `README.md` |
+| 2 Core UI | Done. Header, status, chips, menu, variants, cart drawer, localStorage |
+| 3 Checkout → Messenger | Done. Form, message, shortening, Copy order, recheck at checkout. Verified in headless Chrome (m.me URL contents) |
+| 4 Info, SEO, polish | Done. Info section, OG/meta from config, theme. Lighthouse not run |
+| 5 Test + launch | Not done: real-device and FB/IG in-app testing, deploy, domain, handover. See the checklist in `README.md` |

@@ -1,0 +1,70 @@
+{
+  "cafeName": "Señorito Cafe",
+  "tagline": "Sip & Brew. Savor & Bite.",
+  "description": "Señorito Cafe in Lambakin, Marilao, Bulacan. Iced coffee, matcha, frappuccino, croffles, rice meals and more. Order online via Messenger.",
+  "siteUrl": "https://senorito-cafe.example",
+  "logo": "/assets/logo.jpg",
+  "heroImage": "/assets/hero.jpg",
+  "ogImage": "/assets/og.jpg",
+  "messengerUsername": "61563198329329",
+  "menuCsvUrl": "",
+  "menuCacheMinutes": 10,
+  "address": "Lambakin, Marilao, Bulacan",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Se%C3%B1orito+Cafe+Lambakin+Marilao+Bulacan",
+  "phone": "",
+  "socials": {
+    "facebook": "https://www.facebook.com/profile.php?id=61563198329329",
+    "instagram": "https://www.instagram.com/senoritocafe_27",
+    "tiktok": "https://www.tiktok.com/@senorito.cafe"
+  },
+  "grabfoodUrl": "",
+  "foodpandaUrl": "",
+  "timezone": "Asia/Manila",
+  "hours": {
+    "mon": "12:00 PM – 12:00 AM",
+    "tue": "12:00 PM – 12:00 AM",
+    "wed": "12:00 PM – 12:00 AM",
+    "thu": "12:00 PM – 12:00 AM",
+    "fri": "12:00 PM – 12:00 AM",
+    "sat": "12:00 PM – 12:00 AM",
+    "sun": "12:00 PM – 12:00 AM"
+  },
+  "delivery": true,
+  "allowOrderWhenClosed": true,
+  "perks": [
+    "Free Wi-Fi",
+    "For here",
+    "To go",
+    "Delivery"
+  ],
+  "about": "",
+  "categoryGroups": {
+    "Sip & Brew": [
+      "Iced Coffee",
+      "Hot Coffee",
+      "Non-Coffee",
+      "Matcha Series",
+      "Fruity Soda",
+      "Frappuccino",
+      "Customize Drinks"
+    ],
+    "Savor & Bite": [
+      "Classic Croffles",
+      "Premium Croffles",
+      "Snacks",
+      "Rice Meal",
+      "Pasta",
+      "Sandwich",
+      "Pastry",
+      "Chicken Wings",
+      "Add-ons"
+    ]
+  },
+  "theme": {
+    "primary": "#111111",
+    "accent": "#F2F2F2",
+    "tint": "#DDEFF3",
+    "font": "Outfit"
+  },
+  "logoWide": "/assets/logo-wide.jpg"
+}
